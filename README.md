@@ -229,6 +229,24 @@ mAP (%) on AVA-ActiveSpeaker:
 | ✗ | ✗ | ✓ | 93.68 |
 | ✓ | ✓ | ✓ | **93.80** |
 
+## Demo
+
+### Corruption Robustness on AVA-ActiveSpeaker
+
+ASD results under joint audio-visual corruption (object occlusion + audio noise):
+
+<p align="center">
+  <video src="https://github.com/jisoo-o/C3ASD/raw/main/demo/ava_joint_corruped.mp4" controls width="90%"></video>
+</p>
+
+### Cross-domain Generalization on WASD
+
+Detection results on the WASD dataset (trained on AVA only):
+
+<p align="center">
+  <video src="https://github.com/jisoo-o/C3ASD/raw/main/demo/wasd_demo.mp4" controls width="90%"></video>
+</p>
+
 ## Acknowledgements
 
 This codebase is built upon [Light-ASD](https://github.com/Junhua-Liao/Light-ASD) (CVPR 2023). The corruption evaluation protocol follows [CAV2Vec](https://github.com/sungnyun/cav2vec) (ICLR 2025). We thank the authors for their open-source contributions.
