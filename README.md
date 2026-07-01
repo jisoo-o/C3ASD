@@ -3,6 +3,7 @@
 This repository contains the official implementation of the following paper:
 
 > **C&sup3;ASD: Multi-Level Consistency-Driven Representation Learning for Robust Active Speaker Detection**
+> 
 > Jin Hong\*, Jisoo Park\*, Junseok Kwon&dagger;
 > (\* Equal contribution)
 > **ECCV 2026**
