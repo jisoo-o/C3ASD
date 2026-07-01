@@ -1,0 +1,27 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Experiment outputs
+exps/
+corruption_test_results/
+
+# Model weights
+weight/
+*.model
+
+# Data
+*.wav
+*.jpg
+*.png
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
