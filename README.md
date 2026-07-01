@@ -235,17 +235,13 @@ mAP (%) on AVA-ActiveSpeaker:
 
 ASD results under joint audio-visual corruption (object occlusion + audio noise):
 
-<p align="center">
-  <video src="https://github.com/jisoo-o/C3ASD/raw/main/demo/ava_joint_corruped.mp4" controls width="90%"></video>
-</p>
+https://github.com/user-attachments/assets/7f080506-72dc-41d6-b120-23c13b8b61a7
 
 ### Cross-domain Generalization on WASD
 
 Detection results on the WASD dataset (trained on AVA only):
 
-<p align="center">
-  <video src="https://github.com/jisoo-o/C3ASD/raw/main/demo/wasd_demo.mp4" controls width="90%"></video>
-</p>
+https://github.com/user-attachments/assets/67d0b961-7cff-4f36-bbcd-30f66c825541
 
 ## Acknowledgements
 
