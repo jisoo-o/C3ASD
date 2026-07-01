@@ -138,7 +138,7 @@ bash test_all_corruption.sh c3asd 30
 Required external datasets for corruption testing:
 - [MUSAN](https://www.openslr.org/17/) - Audio noise (babble, music, natural, speech)
 - [DEMAND](https://zenodo.org/record/1227121) - Real-world audio noise environments
-- Occlusion patches - COCO object crops and hand images for visual occlusion
+- Occlusion patches - COCO object crops for visual occlusion (Please refer to [CAV2Vec](https://github.com/sungnyun/cav2vec))
 
 ## Results
 
