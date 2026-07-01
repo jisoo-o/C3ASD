@@ -166,12 +166,10 @@ class corrupted_test_loader(object):
     def __init__(self, trialFileName, audioPath, visualPath,
                  audio_corruption_config=None,
                  visual_corruption_config=None,
-                 temporal_desync=0,
                  **kwargs):
         self.audioPath  = audioPath
         self.visualPath = visualPath
         self.miniBatch = open(trialFileName).read().splitlines()
-        self.temporal_desync = temporal_desync  # shift audio by N video frames (positive = audio ahead)
 
         # Initialize corruption modules
         self.audio_corruptor = None
@@ -223,12 +221,6 @@ class corrupted_test_loader(object):
                                       visualAug=False,
                                       visual_corruptor=self.visual_corruptor)]
         labels = [load_label(data, numFrames)]
-
-        # Apply temporal desync: circular-shift audio MFCC by N video frames
-        # Each video frame = 4 MFCC frames (25fps, 10ms MFCC step)
-        if self.temporal_desync != 0:
-            shift = self.temporal_desync * 4  # convert video frames to MFCC frames
-            audioFeatures[0] = numpy.roll(audioFeatures[0], shift, axis=0)
 
         return torch.FloatTensor(numpy.array(audioFeatures)), \
                torch.FloatTensor(numpy.array(visualFeatures)), \

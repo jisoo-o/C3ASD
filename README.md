@@ -106,7 +106,6 @@ We provide a corruption testing framework following the [CAV2Vec](https://github
 | **Audio (DEMAND)** | `audio_demand_park`, `audio_demand_cafe`, `audio_demand_metro`, `audio_demand_river`, etc. |
 | **Visual** | `visual_object`, `visual_gaussian`, `visual_blur`, `visual_hands`, `visual_pixelate` |
 | **Joint** | `joint_audio_visual`, `joint_severe` |
-| **Temporal** | `temporal_desync` |
 
 #### Single Corruption Test
 
@@ -125,13 +124,6 @@ python test_corruption.py \
     --modelPath exps/c3asd/model/model_0030.model \
     --corruption_type visual_object \
     --occlusion_path /path/to/occlusion_patch
-
-# Temporal desynchronization (+3 frames = +120ms)
-python test_corruption.py \
-    --dataPathAVA /path/to/AVA \
-    --modelPath exps/c3asd/model/model_0030.model \
-    --corruption_type temporal_desync \
-    --temporal_desync 3
 ```
 
 #### Full Corruption Benchmark

@@ -26,8 +26,6 @@ DEMAND_TYPES=("audio_demand_park" "audio_demand_cafe" "audio_demand_metro"
               "audio_demand_river" "audio_demand_restaurant" "audio_demand_cafeteria"
               "audio_demand_public_station" "audio_demand_meeting_room")
 VISUAL_JOINT=("object_occlusion" "pixelation")
-TEMPORAL_DESYNCS=(1 2 3 5 10)                                              # Temporal desync in video frames (±N, 1frame=40ms)
-
 # Results directory
 RESULTS_DIR="corruption_test_results/${EXP_NAME}_${PATCH_SCALE}"
 mkdir -p $RESULTS_DIR
@@ -170,28 +168,6 @@ for VIS in "${VISUAL_JOINT[@]}"; do
             --patch_scale $PATCH_SCALE \
             --results_save_path $RESULTS_DIR
     done
-done
-
-# ====== 7. TEMPORAL DESYNC ======
-for DESYNC in "${TEMPORAL_DESYNCS[@]}"; do
-    echo ""
-    echo "====== Testing: Temporal Desync +${DESYNC} frames (+$((DESYNC*40))ms) ======"
-    python test_corruption.py --seed $SEED \
-        --dataPathAVA $DATA_PATH \
-        --modelPath $MODEL_PATH \
-        --evalDataType $EVAL_DATA_TYPE \
-        --corruption_type temporal_desync \
-        --temporal_desync $DESYNC \
-        --results_save_path $RESULTS_DIR
-
-    echo "====== Testing: Temporal Desync -${DESYNC} frames (-$((DESYNC*40))ms) ======"
-    python test_corruption.py --seed $SEED \
-        --dataPathAVA $DATA_PATH \
-        --modelPath $MODEL_PATH \
-        --evalDataType $EVAL_DATA_TYPE \
-        --corruption_type temporal_desync \
-        --temporal_desync -$DESYNC \
-        --results_save_path $RESULTS_DIR
 done
 
 # ====== SUMMARIZE RESULTS ======

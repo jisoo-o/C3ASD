@@ -30,7 +30,7 @@ def main():
     
     # Corruption settings
     parser.add_argument('--corruption_type', type=str, default='clean',
-                        choices=['clean', 'temporal_desync',
+                        choices=['clean',
                                 'audio_babble', 'audio_music', 'audio_natural', 'audio_speech',
                                 'audio_demand_park', 'audio_demand_cafe', 'audio_demand_metro',
                                 'audio_demand_river', 'audio_demand_restaurant', 'audio_demand_cafeteria',
@@ -77,9 +77,6 @@ def main():
     parser.add_argument('--results_save_path', type=str, default=None,
                         help='Path to save results. If None, use savePath/corruption_results/')
     parser.add_argument('--seed', type=int, default=42, help='Random seed for reproducibility')
-    parser.add_argument('--temporal_desync', type=int, default=0,
-                        help='Temporal desync in video frames (positive=audio ahead, negative=audio behind)')
-
     args = parser.parse_args()
     set_seed(args.seed)
     args = init_args(args)
@@ -127,14 +124,12 @@ def main():
     print(f"Testing with corruption: {args.corruption_type}")
     print(f"Audio corruption: {corruption_config['audio_corruption']}")
     print(f"Visual corruption: {corruption_config['visual_corruption']}")
-    if args.temporal_desync != 0:
-        print(f"Temporal desync: {args.temporal_desync} frames ({args.temporal_desync * 40}ms)")
     print("=" * 80)
     
     # Load test data with corruption
     # Build kwargs without keys that are passed explicitly (avoid duplicate keyword arg error)
     loader_kwargs = {k: v for k, v in vars(args).items()
-                     if k not in ('occlusion_path', 'noise_base_path', 'temporal_desync')}
+                     if k not in ('occlusion_path', 'noise_base_path')}
     loader = corrupted_test_loader(
         trialFileName = args.evalTrialAVA,
         audioPath     = os.path.join(args.audioPathAVA, args.evalDataType),
@@ -143,7 +138,6 @@ def main():
         visual_corruption_config = corruption_config['visual_corruption'],
         noise_base_path = args.noise_base_path,
         occlusion_path = args.occlusion_path,
-        temporal_desync = args.temporal_desync,
         **loader_kwargs
     )
     g = torch.Generator()
@@ -183,8 +177,6 @@ def main():
     # Build result filename: joint uses '+' separator (e.g., audio_babble+object_occlusion_snr-10)
     if args.visual_corruption_type is not None and args.corruption_type.startswith('audio'):
         base = f'{args.corruption_type}+{args.visual_corruption_type}'
-    elif args.corruption_type == 'temporal_desync':
-        base = f'temporal_desync_{args.temporal_desync:+d}'
     else:
         base = args.corruption_type
     if args.audio_snr is not None:
@@ -196,8 +188,6 @@ def main():
         f.write(f"Corruption type: {args.corruption_type}\n")
         f.write(f"Audio corruption: {corruption_config['audio_corruption']}\n")
         f.write(f"Visual corruption: {corruption_config['visual_corruption']}\n")
-        if args.temporal_desync != 0:
-            f.write(f"Temporal desync: {args.temporal_desync} frames ({args.temporal_desync * 40}ms)\n")
         f.write(f"Model: {model_path}\n")
         f.write(f"mAP: {mAP:.2f}%\n")
     
