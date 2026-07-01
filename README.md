@@ -12,7 +12,7 @@ This repository contains the official implementation of the following paper:
 C&sup3;ASD improves the robustness of lightweight Active Speaker Detection (ASD) models by introducing three levels of consistency regularization that encourage coherent representations across modalities and prediction heads, without adding inference cost.
 
 <p align="center">
-  <img src="figures/architecture.png" width="90%">
+  <img src="figures/teaser.png" width="90%">
 </p>
 
 ### Consistency Losses

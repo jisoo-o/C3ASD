@@ -16,7 +16,10 @@ weight/
 # Data
 *.wav
 *.jpg
+
+# Images (except figures/)
 *.png
+!figures/*.png
 
 # IDE
 .vscode/
