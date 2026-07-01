@@ -100,27 +100,6 @@ python test_corruption.py --seed $SEED \
     --results_save_path $RESULTS_DIR
 
 echo ""
-echo "====== Testing: Visual - Gaussian Noise + Blur ======"
-python test_corruption.py --seed $SEED \
-    --dataPathAVA $DATA_PATH \
-    --modelPath $MODEL_PATH \
-    --evalDataType $EVAL_DATA_TYPE \
-    --corruption_type visual_gaussian \
-    --patch_scale $PATCH_SCALE \
-    --results_save_path $RESULTS_DIR
-
-echo ""
-echo "====== Testing: Visual - Hands Occlusion ======"
-python test_corruption.py --seed $SEED \
-    --dataPathAVA $DATA_PATH \
-    --modelPath $MODEL_PATH \
-    --evalDataType $EVAL_DATA_TYPE \
-    --corruption_type visual_hands \
-    --occlusion_path $OCCLUSION_PATH \
-    --patch_scale $PATCH_SCALE \
-    --results_save_path $RESULTS_DIR
-
-echo ""
 echo "====== Testing: Visual - Pixelation ======"
 python test_corruption.py --seed $SEED \
     --dataPathAVA $DATA_PATH \

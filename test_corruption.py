@@ -31,13 +31,11 @@ def main():
     # Corruption settings
     parser.add_argument('--corruption_type', type=str, default='clean',
                         choices=['clean',
-                                'audio_babble', 'audio_music', 'audio_natural', 'audio_speech',
+                                'audio_babble', 'audio_music', 'audio_natural',
                                 'audio_demand_park', 'audio_demand_cafe', 'audio_demand_metro',
                                 'audio_demand_river', 'audio_demand_restaurant', 'audio_demand_cafeteria',
                                 'audio_demand_public_station', 'audio_demand_meeting_room',
-                                'visual_object', 'visual_gaussian', 'visual_blur',
-                                'visual_hands', 'visual_pixelate',
-                                'joint_audio_visual', 'joint_severe'],
+                                'visual_object', 'visual_pixelate'],
                         help='Type of corruption to apply')
     
     # Advanced corruption settings (override config)

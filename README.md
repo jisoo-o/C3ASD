@@ -102,10 +102,10 @@ We provide a corruption testing framework following the [CAV2Vec](https://github
 
 | Category | Types |
 |----------|-------|
-| **Audio (MUSAN)** | `audio_babble`, `audio_music`, `audio_natural`, `audio_speech` |
+| **Audio (MUSAN)** | `audio_babble`, `audio_music`, `audio_natural` |
 | **Audio (DEMAND)** | `audio_demand_park`, `audio_demand_cafe`, `audio_demand_metro`, `audio_demand_river`, etc. |
-| **Visual** | `visual_object`, `visual_gaussian`, `visual_blur`, `visual_hands`, `visual_pixelate` |
-| **Joint** | `joint_audio_visual`, `joint_severe` |
+| **Visual** | `visual_object`, `visual_pixelate` |
+| **Joint** | Combine audio + `--visual_corruption_type` (see `test_all_corruption.sh`) |
 
 #### Single Corruption Test
 

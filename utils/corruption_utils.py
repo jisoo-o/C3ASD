@@ -345,7 +345,6 @@ def get_corruption_config(corruption_type='clean'):
     CAV2Vec evaluation settings:
     - corruption_prob=1.0 (apply to all sequences)
     - Object occlusion: max_freq=1, with Gaussian noise
-    - Hands occlusion: max_freq=3, without Gaussian noise
     - Pixelation: max_freq=3
     - Audio: SNR=-10dB fixed, or range [-10,10] for DEMAND
     
@@ -362,7 +361,7 @@ def get_corruption_config(corruption_type='clean'):
         },
         
         # ===== AUDIO CORRUPTIONS =====
-        # MUSAN noise types (babble, music, natural, speech)
+        # MUSAN noise types (babble, music, natural)
         'audio_babble': {
             'audio_corruption': {'noise_type': 'babble', 'snr': -10},
             'visual_corruption': None
@@ -373,10 +372,6 @@ def get_corruption_config(corruption_type='clean'):
         },
         'audio_natural': {
             'audio_corruption': {'noise_type': 'natural', 'snr': -10},
-            'visual_corruption': None
-        },
-        'audio_speech': {
-            'audio_corruption': {'noise_type': 'speech', 'snr': -10},
             'visual_corruption': None
         },
         
@@ -431,38 +426,7 @@ def get_corruption_config(corruption_type='clean'):
                 'patch_scale': 1.0  # 1.0=full frame, 0.5=half size
             }
         },
-        
-        # Gaussian noise and blur only
-        'visual_gaussian': {
-            'audio_corruption': None,
-            'visual_corruption': {
-                'type': 'gaussian_noise_blur',
-                'prob': 1.0,
-                'max_freq': 1
-            }
-        },
-        
-        # Blur only
-        'visual_blur': {
-            'audio_corruption': None,
-            'visual_corruption': {
-                'type': 'blur',
-                'prob': 1.0,
-                'max_freq': 1
-            }
-        },
-        
-        # Hands occlusion (larger occlusion area)
-        'visual_hands': {
-            'audio_corruption': None,
-            'visual_corruption': {
-                'type': 'hands_occlusion',
-                'prob': 1.0,
-                'max_freq': 3,  # CAV2Vec: max_freq=3 for hands
-                'add_noise': False  # No Gaussian noise for hands
-            }
-        },
-        
+
         # Pixelation (privacy simulation)
         'visual_pixelate': {
             'audio_corruption': None,
@@ -470,26 +434,6 @@ def get_corruption_config(corruption_type='clean'):
                 'type': 'pixelation',
                 'prob': 1.0,
                 'max_freq': 3  # CAV2Vec: max_freq=3 for pixelation
-            }
-        },
-        
-        # ===== JOINT AUDIO-VISUAL CORRUPTIONS =====
-        'joint_audio_visual': {
-            'audio_corruption': {'noise_type': 'babble', 'snr': -10},
-            'visual_corruption': {
-                'type': 'object_occlusion',
-                'prob': 1.0,
-                'max_freq': 1,
-                'add_noise': True
-            }
-        },
-        
-        'joint_severe': {
-            'audio_corruption': {'noise_type': 'demand_cafe', 'snr_range': (-10, 10)},
-            'visual_corruption': {
-                'type': 'hands_occlusion',
-                'prob': 1.0,
-                'max_freq': 3
             }
         }
     }
