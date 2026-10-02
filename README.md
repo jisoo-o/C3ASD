@@ -250,3 +250,18 @@ This codebase is built upon [Light-ASD](https://github.com/Junhua-Liao/Light-ASD
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Citation
+
+If you find this work useful, please cite:
+
+```bibtex
+@inproceedings{hong2026c,
+  title={C$^3$ASD: Multi-level Consistency-Driven Representation Learning for Robust Active Speaker Detection},
+  author={Hong, Jin and Park, Jisoo and Kwon, Junseok},
+  booktitle={European Conference on Computer Vision},
+  pages={171--195},
+  year={2026},
+  organization={Springer}
+}
+```
